@@ -1,3 +1,16 @@
+# Version 1.4.0
+
+* Updating fast_tls to version 1.1.2.
+* Updating fast_xml to version 1.1.37.
+* Updating stringprep to version 1.0.17.
+* Updating p1_utils to version 1.0.16.
+* Update type specs
+* Improve xdata compiler
+* Add support for CAPTCHA data forms (XEP-0158)
+* Accept certificates without XmppAddr fields
+* Improve xmpp\_socket:get\_peer\_certificate/2
+* Update pubsub#metadata form
+
 # Version 1.3.4
 
 * Updating ezlib to version 1.0.6.
