@@ -1,7 +1,7 @@
 %%%-------------------------------------------------------------------
 %%% @author Stephen Röttger <stephen.roettger@googlemail.com>
 %%%
-%%% Copyright (C) 2002-2019 ProcessOne, SARL. All Rights Reserved.
+%%% Copyright (C) 2002-2020 ProcessOne, SARL. All Rights Reserved.
 %%%
 %%% Licensed under the Apache License, Version 2.0 (the "License");
 %%% you may not use this file except in compliance with the License.
@@ -69,5 +69,10 @@ hi_round(Password, UPrev, IterationCount) ->
     U = sha_mac(Password, UPrev),
     crypto:exor(U, hi_round(Password, U, IterationCount - 1)).
 
+-ifdef(USE_OLD_CRYPTO_HMAC).
 sha_mac(Key, Data) ->
     crypto:hmac(sha, Key, Data).
+-else.
+sha_mac(Key, Data) ->
+    crypto:mac(hmac, sha, Key, Data).
+-endif.

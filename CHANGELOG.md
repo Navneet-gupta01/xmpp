@@ -1,3 +1,40 @@
+# Version 1.4.7
+
+* Updating fast_tls to version 1.1.6.
+* Updating p1_utils to version 1.0.19.
+* Updating fast_xml to version 1.1.41.
+* Updating stringprep to version 1.0.20.
+* Fix compatibility issues with Erlang 23
+
+# Version 1.4.6
+
+* Updating fast_tls to version 1.1.5.
+* Updating fast_xml to version 1.1.40.
+* Recognize elements from XEP-0215 (External Service Discovery)
+* Limit usage of synchronously terminating session, as is can cause
+  problems with handling of queued messages
+
+# Version 1.4.5
+
+* Updating ezlib to version 1.0.7.
+* Updating fast_tls to version 1.1.4.
+* Updating fast_xml to version 1.1.39.
+* Updating p1_utils to version 1.0.18.
+* Updating stringprep to version 1.0.19.
+* Update copyright year
+
+# Version 1.4.4
+
+* Fix handling of infinity values in couple places
+* Declare namespace for "urn:xmpp:carbons:rules:0"
+
+# Version 1.4.3
+
+* Updating fast_tls to version 1.1.3.
+* Updating stringprep to version 1.0.18.
+* Updating fast_xml to version 1.1.38.
+* Updating p1_utils to version 1.0.17.
+
 # Version 1.4.2
 
 * Fix incorrect return type
