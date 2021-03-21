@@ -1,3 +1,25 @@
+# Version 1.5.2
+
+* Updating fast_tls to version 1.1.11.
+* Allow to free socket/parser/tls when session get detached
+* Add support for XEP-0430: Inbox
+* Add support for XEP-0333: Chat Markers
+* Add missing applicaitons to xmpp.app
+* Fix timezone in timestamp used by XEP-0202
+* Don't throw exception when client send invalid lenght sasl response
+
+# Version 1.5.1
+
+* Fix issues with scram *-PLUS
+
+# Version 1.5.0
+
+* Updating p1_utils to version 1.0.21.
+* Updating stringprep to version 1.0.24.
+* Updating fast_tls to version 1.1.10.
+* Updating fast_xml to version 1.1.45.
+* Add support for scram-sha-256/512-{plus}
+
 # Version 1.4.10
 
 * Updating ezlib to version 1.0.9.

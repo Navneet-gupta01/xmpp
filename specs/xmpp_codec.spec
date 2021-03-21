@@ -3224,6 +3224,43 @@
 	   refs = [#ref{name = forwarded, min = 1,
                         max = 1, label = '$forwarded'}]}).
 
+-xml(inbox_query,
+     #elem{name = <<"inbox">>,
+	   xmlns = <<"urn:xmpp:inbox:1">>,
+	   module = 'xep0430',
+	   result = {inbox_query, '$rsm'},
+	   refs = [#ref{name = rsm_set, min = 0, max = 1, label = '$rsm'}]}).
+
+-xml(inbox_entry,
+     #elem{name = <<"entry">>,
+	   xmlns = <<"urn:xmpp:inbox:1">>,
+	   module = 'xep0430',
+	   result = {inbox_entry, '$unread', '$jid', '$id'},
+	   attrs = [#attr{name = <<"unread">>,
+			  dec = {dec_int, [0, infinity]},
+			  enc = {enc_int, []}},
+		    #attr{name = <<"jid">>,
+			  label = '$jid',
+			  dec = {jid, decode, []},
+			  enc = {jid, encode, []}},
+		    #attr{name = <<"id">>}]}).
+
+-xml(inbox_fin,
+     #elem{name = <<"fin">>,
+	   xmlns = <<"urn:xmpp:inbox:1">>,
+	   module = 'xep0430',
+	   result = {inbox_fin, '$total', '$unread', '$all_unread', '$rsm'},
+	   attrs = [#attr{name = <<"total">>,
+			  dec = {dec_int, [0, infinity]},
+			  enc = {enc_int, []}},
+		    #attr{name = <<"unread">>,
+			  dec = {dec_int, [0, infinity]},
+			  enc = {enc_int, []}},
+		    #attr{name = <<"all-unread">>, label = '$all_unread',
+			  dec = {dec_int, [0, infinity]},
+			  enc = {enc_int, []}}],
+	   refs = [#ref{name = rsm_set, min = 0, max = 1, label = '$rsm'}]}).
+
 -xml(feature_csi,
      #elem{name = <<"csi">>,
 	   xmlns = <<"urn:xmpp:csi:0">>,
@@ -3978,6 +4015,33 @@
 	   module = 'xep0184',
 	   result = {receipt_response, '$id'},
 	   attrs = [#attr{name = <<"id">>}]}).
+
+-xml(mark_markable,
+     #elem{name = <<"markable">>,
+	   xmlns = <<"urn:xmpp:chat-markers:0">>,
+	   module = 'xep0333',
+	   result = true}).
+
+-xml(mark_received,
+     #elem{name = <<"received">>,
+	   xmlns = <<"urn:xmpp:chat-markers:0">>,
+	   module = 'xep0333',
+	   result = {mark_received, '$id'},
+	   attrs = [#attr{name = <<"id">>, required = true}]}).
+
+-xml(mark_displayed,
+     #elem{name = <<"displayed">>,
+	   xmlns = <<"urn:xmpp:chat-markers:0">>,
+	   module = 'xep0333',
+	   result = {mark_displayed, '$id'},
+	   attrs = [#attr{name = <<"id">>, required = true}]}).
+
+-xml(mark_acknowledged,
+     #elem{name = <<"acknowledged">>,
+	   xmlns = <<"urn:xmpp:chat-markers:0">>,
+	   module = 'xep0333',
+	   result = {mark_acknowledged, '$id'},
+	   attrs = [#attr{name = <<"id">>, required = true}]}).
 
 -xml(sic_ip,
      #elem{name = <<"ip">>,
@@ -4959,7 +5023,7 @@ dec_tzo(Val) ->
 
 enc_tzo({H, M}) ->
     Sign = if H >= 0 ->
-                   <<>>;
+                   <<"+">>;
               true ->
                    <<"-">>
            end,
